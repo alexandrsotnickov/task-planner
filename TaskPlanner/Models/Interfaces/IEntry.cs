@@ -1,4 +1,5 @@
-﻿using TaskPlanner.Models.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using TaskPlanner.Models.Enums;
 
 namespace TaskPlanner.Models.Interfaces
 {
@@ -6,6 +7,5 @@ namespace TaskPlanner.Models.Interfaces
     {
         int Id { get; set; }
         string Name { get; set; }
-        
     }
 }

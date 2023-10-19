@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.\\SQLEXPRESS;Database=task_planner_db;User=root;Password=123qweR%;Trusted_Connection=True;TrustServerCertificate=True"
+  }
+}

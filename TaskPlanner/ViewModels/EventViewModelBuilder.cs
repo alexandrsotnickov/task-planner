@@ -14,7 +14,7 @@ namespace TaskPlanner.ViewModels
         {
             return new EventViewModel()
             {
-                Date = @event.StartDate,
+                Date = @event.Date,
                 Name = @event.Name
             };
         }

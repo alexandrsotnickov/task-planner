@@ -11,7 +11,8 @@ namespace TaskPlanner.Models.Entities.Factory
 
             if (selectedType == EntryType.Event)
             {
-                return new Event();
+                //return new Event();
+                return null;
             }
             else
             {

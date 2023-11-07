@@ -1,9 +1,30 @@
-﻿
-    ViewData["Title"] = "Home Page";
-}
+﻿@page
+@model TaskPlanner.ViewModels.CalendarViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="calendar">
+    <div class="header">
+        @Model.Date.ToString("MMMM yyyy")
+    </div>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Пн</th>
+            <th>Вт</th>
+            <th>Ср</th>
+            <th>Чт</th>
+            <th>Пт</th>
+            <th>Сб</th>
+            <th>Вс</th>
+        </tr>
+        @for (int i = 0; i != this.Model.Days.GetLength(0); i++)
+        {
+            <tr>
+                @for (int j = 0; j != this.Model.Days.GetLength(1); j++)
+                {
+                    <td>
+                        @Html.Partial("_Day", this.Model.Days[i, j])
+                    </td>
+                }
+            </tr>
+        }
+    </table>
 </div>
-

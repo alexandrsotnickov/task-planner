@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client.Extensions.Msal;
+using TaskPlanner.Models.Entities;
 using TaskPlanner.Models.Interfaces;
 
 namespace TaskPlanner.ViewModels
@@ -20,7 +21,7 @@ namespace TaskPlanner.ViewModels
                     IsNotCurrentMonth = date.Month != DateTime.Now.Month,
                     IsWeekendOrHoliday = date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday,
                     IsToday = date.Date == DateTime.Now.Date,
-                    Events = this.Storage.EventRepository.FilteredByDate(date).Select(
+                    Events = (IEnumerable<EventViewModelBuilder>)Storage.EventRepository.FilteredByDate(date).Select(
                     e => new EventViewModelBuilder(this.Storage).Build(e)
                   )
                 };

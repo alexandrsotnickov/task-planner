@@ -1,4 +1,5 @@
-﻿using TaskPlanner.Models.Interfaces;
+﻿using TaskPlanner.Models.DataAccess;
+using TaskPlanner.Models.Interfaces;
 
 namespace TaskPlanner.Models.Entities
 {

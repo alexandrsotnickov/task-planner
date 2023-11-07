@@ -1,49 +1,70 @@
 // Add services to the container.
-using Microsoft.EntityFrameworkCore;
-IConfigurationRoot _confString = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("dbsettings.json").Build();
-var builder = WebApplication.CreateBuilder(args);
+//using Microsoft.EntityFrameworkCore;
+//IConfigurationRoot _confString = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("dbsettings.json").Build();
+//var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationContext>(options =>
-  options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-var app = builder.Build();
+//builder.Services.AddDbContext<ApplicationContext>(options =>
+//  options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+//var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+//// Configure the HTTP request pipeline.
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseExceptionHandler("/Home/Error");
+//    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+//    app.UseHsts();
+//}
+//else
+//{
+//    app.UseDeveloperExceptionPage();
+//    app.UseMigrationsEndPoint();
+//}
+//app.UseHttpsRedirection();
+//app.UseStaticFiles();
+
+//app.UseRouting();
+
+//app.UseAuthorization();
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+
+//    var context = services.GetRequiredService<ApplicationContext>();
+//    context.Database.EnsureCreated();
+//    // DbInitializer.Initialize(context);
+//}
+
+
+//app.Run();
+
+
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+
+namespace TaskPlanner
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            IWebHost webHost = new WebHostBuilder()
+              .UseContentRoot(Directory.GetCurrentDirectory())
+              .UseKestrel()
+              .UseIISIntegration()
+              .UseStartup<Startup>()
+              .Build();
+
+            webHost.Run();
+        }
+    }
 }
-else
-{
-    app.UseDeveloperExceptionPage();
-    app.UseMigrationsEndPoint();
-}
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    var context = services.GetRequiredService<ApplicationContext>();
-    context.Database.EnsureCreated();
-    // DbInitializer.Initialize(context);
-}
-
-
-app.Run();
-
 

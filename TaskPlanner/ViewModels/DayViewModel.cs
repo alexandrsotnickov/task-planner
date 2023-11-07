@@ -9,6 +9,6 @@ namespace TaskPlanner.ViewModels
         public bool IsWeekendOrHoliday { get; set; }
         public bool IsToday { get; set; }
 
-        public IEnumerable<EventViewModelBuilder> Events { get; set; }
+        public IEnumerable<EventViewModel> Events { get; set; }
     }
 }

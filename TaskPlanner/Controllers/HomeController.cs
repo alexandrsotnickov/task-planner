@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TaskPlanner.Models;
+using TaskPlanner.Models.Interfaces;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IStorage storage;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IStorage storage)
         {
-            _logger = logger;
+            this.storage = storage;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            return this.View(new CalendarViewModelBuilder(this.storage).Build());
         }
 
         public IActionResult Privacy()
